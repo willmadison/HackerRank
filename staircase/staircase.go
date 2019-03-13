@@ -1,13 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
-	"strings"
 )
 
 const (
-	pad   = " "
-	pound = "#"
+	pad   = ' '
+	pound = '#'
 )
 
 func main() {
@@ -22,15 +22,15 @@ func main() {
 }
 
 func getStairRow(numPounds, padding int) string {
-	stairRow := []string{}
+	var buf bytes.Buffer
 
 	for i := 0; i < padding; i++ {
-		stairRow = append(stairRow, pad)
+		buf.WriteRune(pad)
 	}
 
 	for i := 0; i < numPounds; i++ {
-		stairRow = append(stairRow, pound)
+		buf.WriteRune(pound)
 	}
 
-	return strings.Join(stairRow, "")
+	return buf.String()
 }
