@@ -14,8 +14,6 @@ func getCalendarByYear(year int) calendar {
 	switch {
 	case 1700 <= year && year <= 1917:
 		return newJulianCalendar(year)
-	case 1700 <= year && year <= 1917:
-		return newJulianCalendar(year)
 	default:
 		return newGregorianCalendar(year)
 	}
