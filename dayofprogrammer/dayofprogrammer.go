@@ -37,7 +37,7 @@ func newJulianCalendar(year int) calendar {
 		time.December:  31,
 	}
 
-	if isLeapYear(year) {
+	if isJulianLeapYear(year) {
 		daysByMonth[time.February]++
 	}
 
@@ -53,21 +53,25 @@ func newGregorianCalendar(year int) calendar {
 		time.May:       31,
 		time.June:      30,
 		time.July:      31,
-		time.August:    30,
+		time.August:    31,
 		time.September: 30,
 		time.October:   31,
 		time.November:  30,
 		time.December:  31,
 	}
 
-	if isLeapYear(year) {
+	if isGregorianLeapYear(year) {
 		daysByMonth[time.February]++
 	}
 
 	return calendar{year, daysByMonth}
 }
 
-func isLeapYear(year int) bool {
+func isJulianLeapYear(year int) bool {
+	return year%4 == 0
+}
+
+func isGregorianLeapYear(year int) bool {
 	return year%400 == 0 || (year%4 == 0 && year%100 != 0)
 }
 
@@ -107,10 +111,10 @@ func (c calendar) get(day int) string {
 			daysTranspired += daysInMonth
 		} else {
 			month = m
-			dayInMonth = day - daysTranspired - 1
+			dayInMonth = day - daysTranspired
 
 			if c.year == 1918 && m == time.February {
-				dayInMonth += 14
+				dayInMonth += 13
 			}
 			break
 		}

@@ -55,7 +55,7 @@ func TestDayOfProgrammer(t *testing.T) {
 			"46th day of 1918",
 			struct {
 				day, year int
-			}{33, 1918},
+			}{46, 1918},
 			"28.02.1918",
 		},
 		{
@@ -64,6 +64,13 @@ func TestDayOfProgrammer(t *testing.T) {
 				day, year int
 			}{47, 1918},
 			"01.03.1918",
+		},
+		{
+			"50th day of 1918",
+			struct {
+				day, year int
+			}{50, 1918},
+			"04.03.1918",
 		},
 	}
 
